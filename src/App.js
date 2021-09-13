@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Numero from './components/Numero'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+
+  const [num, setNum] = useState(10)
+  const [nome, setNome] = useState('Pamela')
+
+  return(
+    <>
+      <p>Valor do State num em App: {num}</p>
+      <Numero num={num} setNum={setNum}/>
+      <p>{nome}{setNome}</p>
+    </>
+  )
 }
-
-export default App;
