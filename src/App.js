@@ -1,25 +1,34 @@
 import React, {useState} from 'react'
-import Led from './components/Led'
 
 export default function App() {
 
-  const [ligado, setLigado] = useState(false) 
+  const [log, setLog]=useState(false)
 
-  const cancelar=(obj)=>{
-    return obj.preventDefault()
+  const msglogin=()=>{
+    return 'Usuário Logado'
+  }
+
+  const msglogoff=()=>{
+    return 'Favor Logar'
+  }
+
+  const cumprimento=()=>{
+    const hora=new Date().getHours()
+
+    if (hora >=0 && hora < 13) {
+      return <p>Bom dia</p>
+    } else if (hora >=13 && hora < 18) {
+      return <p>Boa tarde</p>
+    } else {
+      return <p>Boa noite</p>
+    }
   }
 
   return(
     <>
-      <Led ligado={ligado} setLigado={setLigado}/>
-      <a
-        href='https://instagram.com/pamelabadermann'
-        rel='noreferrer'
-        target='_blank'
-        onClick={(e)=>cancelar(e)}  
-      >
-        Insta
-      </a>
+      {cumprimento()}
+      <p>{log?msglogin():msglogoff()}</p>
+      <button onClick={()=>setLog(!log)}>{log?'Logoff':'Login'}</button>
     </>
   )
 }
