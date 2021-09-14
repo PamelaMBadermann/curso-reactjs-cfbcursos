@@ -1,17 +1,25 @@
-import React, { useState } from 'react'
-import Numero from './components/Numero'
-import './App.css'
+import React, {useState} from 'react'
+import Led from './components/Led'
 
 export default function App() {
 
-  const [num, setNum] = useState(10)
-  const [nome, setNome] = useState('Pamela')
+  const [ligado, setLigado] = useState(false) 
+
+  const cancelar=(obj)=>{
+    return obj.preventDefault()
+  }
 
   return(
     <>
-      <p>Valor do State num em App: {num}</p>
-      <Numero num={num} setNum={setNum}/>
-      <p>{nome}{setNome}</p>
+      <Led ligado={ligado} setLigado={setLigado}/>
+      <a
+        href='https://instagram.com/pamelabadermann'
+        rel='noreferrer'
+        target='_blank'
+        onClick={(e)=>cancelar(e)}  
+      >
+        Insta
+      </a>
     </>
   )
 }
